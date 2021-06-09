@@ -1,0 +1,15 @@
+<div class="row">
+    <mat-form-field>
+        <mat-label>Examen</mat-label>
+        <mat-select (selectionChange)="applySelect($event.value)">
+            <mat-option *ngFor="let examen of displayedExamen" [value]="examen.id">
+                {{examen.nombre}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="warn" type="button" (click)="eventEliminarDetalle(examen1.id)">
+        <mat-icon>del</mat-icon>
+        <span>Eliminar</span>
+    </button>
+</div>

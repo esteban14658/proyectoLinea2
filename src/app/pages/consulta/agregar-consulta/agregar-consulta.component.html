@@ -1,0 +1,64 @@
+<form>
+
+    <h1 class="center">Seleccionar medico</h1>
+    <mat-form-field>
+        <mat-label>Medico</mat-label>
+        <mat-select [(ngModel)]="consulta.medico" name="medico">
+            <mat-option *ngFor="let medico of displayedMedico" [value]="medico">
+                {{medico.nombre + " " + medico.apellido}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <br>
+    <h2>¿Deseas agregar detalle consulta?</h2>
+    Diagnostico Tratamiento
+    <button mat-raised-button color="primary" (click)="adicionarDetalle()">
+        <mat-icon>note_add</mat-icon>
+        <span>Agregar</span>
+    </button>
+
+    <div *ngFor="let item of listaDetalleConsulta">
+        <app-detalle-consulta [detalleConsulta]="item" (eliminarDetalle)="eliminarDetalleConsulta(item.id)">
+        </app-detalle-consulta>
+    </div>
+    <br>
+    <h1 class="center">Seleccionar examen</h1>
+    <mat-form-field>
+        <mat-label>Toppings</mat-label>
+        <mat-select [formControl]="examenes" multiple (selectionChange)="filter($event)">
+            <mat-option *ngFor="let item of displayedExamen" [value]="item">{{item.nombre}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <!--button mat-raised-button color="primary" (click)="adicionarExamen()">
+        <mat-icon>note_add</mat-icon>
+        <span>Agregar</span>
+    </button>
+
+    
+        
+    <div *ngFor="let item of listaConsultaExamen">
+        <app-lista-examen> [dataEntrante]="item" (examenEnviar)="traerId()"
+                           [examen1]="item" (eliminarDetalle)="eliminarExamen(item.id)"
+        </app-lista-examen>
+    </div-->
+
+    
+    <br>
+
+    <mat-form-field >
+        <textarea matInput [(ngModel)]="conEx.infoAdicional" [value]="conEx.infoAdicional" [ngModelOptions]="{standalone: true}" placeholder="Informacion adicional" minlength="6"  maxlength="50"> </textarea>
+        <mat-error *ngIf="infoAdicional.invalid && infoAdicional.errors.required">La informacion adicional es requerida
+            , texto entre 6 y 50 caracteres</mat-error>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="guardar()">
+        <mat-icon>save</mat-icon>
+        <span>Guardar</span>
+    </button>
+
+    <button mat-raised-button color="warn"  type="button"  routerLink="/consulta">
+        <mat-icon>close</mat-icon>
+        <span>Cancelar</span>
+    </button>
+</form>

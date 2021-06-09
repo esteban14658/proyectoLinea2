@@ -1,0 +1,48 @@
+<form [formGroup]="form" #frmMedico="ngForm" (ngSubmit)="guardar()" >
+
+    <mat-form-field >
+            <input matInput placeholder="Juanito"  formControlName="nombre" maxlength="20" >
+            <mat-error *ngIf="nombre.invalid && nombre.errors.required">El nombre es requerido</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field >
+        <input matInput placeholder="Perez"  formControlName="apellido" maxlength="20" >
+        <mat-error *ngIf="apellido.invalid && apellido.errors.required">El apellido es requerido</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field >
+        <input matInput type="email" placeholder="ejemplo@ejem.com"  formControlName="correo" maxlength="20" >
+        <mat-error *ngIf="correo.invalid && correo.errors.required">El correo es requerido</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field >
+        <input matInput placeholder="cra 123 #01-01"  formControlName="direccionDetallada" maxlength="20" >
+        <mat-error *ngIf="direccionDetallada.invalid && direccionDetallada.errors.required">La direccion detallada es requerida</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field >
+        <input matInput placeholder="los olivos"  formControlName="barrio" maxlength="20" >
+        <mat-error *ngIf="barrio.invalid && barrio.errors.required">El barrio es requerido</mat-error>
+    </mat-form-field>
+    <br>
+
+    <mat-form-field >
+        <input matInput placeholder="101010"  formControlName="codigoPostal" maxlength="20" >
+        <mat-error *ngIf="codigoPostal.invalid && codigoPostal.errors.required">El codigo postal es requerido</mat-error>
+    </mat-form-field>
+    <br>
+
+    <button mat-raised-button color="primary" type="submit" [disabled]="frmMedico.invalid">
+        <mat-icon>done</mat-icon>
+        <span>Guardar</span>
+    </button>
+
+    <button mat-raised-button color="warn"  type="button"  routerLink="/medicos">
+        <mat-icon>close</mat-icon>
+        <span>Cancelar</span>
+    </button>
+</form>

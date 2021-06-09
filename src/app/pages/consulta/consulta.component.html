@@ -1,0 +1,48 @@
+<div [hidden]="route.children.length !== 0">
+    <mat-form-field>
+        <mat-label>Filtro</mat-label>
+        <input matInput (keyup)="applyFilter($event)" matInput placeholder="Filtro">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        
+        <ng-container matColumnDef="fecha">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.fecha}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="medico">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Medico </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.medico.nombre +" "+ element.medico.apellido}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-button color="primary" [routerLink]="['/consulta/visualizardetalles/', element.id]" >
+                    <mat-icon>remove_red_eye</mat-icon>
+                </button>
+                <button mat-button color="primary" [routerLink]="['/consulta/edicion/', element.id]" >
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-button color="primary" (click)="eliminar(element.id)">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </table>
+
+    <mat-paginator [pageSize]="pageSize" [pageSizeOptions]="[2, 5, 10, 25, 100]" [length]="cantidad"
+        (page)="cambiarPagina($event)"></mat-paginator>
+
+    <button mat-fab color="accent" style="float: right" routerLink="/consulta/agregar">
+        <span class="material-icons">
+            note_add
+        </span>
+    </button>
+</div>
+
+<router-outlet></router-outlet>

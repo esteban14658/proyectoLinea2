@@ -1,0 +1,39 @@
+<div>
+    <table mat-table [dataSource]="dataSourceDetalleConsulta" matSort class="mat-elevation-z8">
+
+        <ng-container matColumnDef="diagnostico">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Diagnostico </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.diagnostico}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="tratamiento">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Tratamiento </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.tratamiento}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsDC"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsDC;"></mat-row>
+
+    </table>
+</div>
+
+<br>
+
+<div>
+    <table mat-table [dataSource]="dataSourceConsultaExamen" matSort class="mat-elevation-z8">
+
+        <ng-container matColumnDef="nombre">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.examen.nombre}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="descripcion">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.examen.descripcion}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumnsCE"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumnsCE;"></mat-row>
+
+    </table>
+</div>
