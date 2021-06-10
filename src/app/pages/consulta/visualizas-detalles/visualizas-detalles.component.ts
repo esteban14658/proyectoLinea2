@@ -18,7 +18,7 @@ export class VisualizasDetallesComponent implements OnInit {
 
   id: number;
   idConsulta: number;
-
+  fecha: string;
   dataSourceDetalleConsulta = new MatTableDataSource<DetalleConsulta>();
   dataSourceConsultaExamen = new MatTableDataSource<ConsultaExamen>();
 
@@ -46,6 +46,7 @@ export class VisualizasDetallesComponent implements OnInit {
     this.consultaService.listarPorId(this.id).subscribe(data => {
       this.dataSourceDetalleConsulta = new MatTableDataSource(data.listaDetalleConsulta);
       console.log(data);
+      this.fecha = data.fecha;
       this.dataSourceDetalleConsulta.sort = this.sort;
     });
   }
