@@ -24,7 +24,7 @@
     <br>
     <h1 class="center">Seleccionar examen</h1>
     <mat-form-field>
-        <mat-label>Toppings</mat-label>
+        <mat-label>Examenes</mat-label>
         <mat-select [formControl]="examenes" multiple (selectionChange)="filter($event)">
             <mat-option *ngFor="let item of displayedExamen" [value]="item">{{item.nombre}}</mat-option>
         </mat-select>

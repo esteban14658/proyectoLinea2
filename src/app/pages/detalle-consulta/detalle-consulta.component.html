@@ -1,8 +1,8 @@
 <div class="mat-form-field">
 
-        <input [(ngModel)]="detalleConsulta.diagnostico" [value]="detalleConsulta.diagnostico" matInput placeholder="Diagnostico"   maxlength="20" >
+        <input [(ngModel)]="detalleConsulta.diagnostico" [value]="detalleConsulta.diagnostico" matInput placeholder="Diagnostico"   maxlength="30" >
 
-        <input [(ngModel)]="detalleConsulta.tratamiento" [value]="detalleConsulta.tratamiento" matInput placeholder="Tratamiento"  maxlength="20" >
+        <input [(ngModel)]="detalleConsulta.tratamiento" [value]="detalleConsulta.tratamiento" matInput placeholder="Tratamiento"  maxlength="30" >
 
     <button mat-raised-button color="warn" type="button" (click)="eventEliminarDetalle(detalleConsulta.id)">
         <mat-icon>del</mat-icon>

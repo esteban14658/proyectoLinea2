@@ -1,13 +1,13 @@
 <form [formGroup]="form" #frmExamen="ngForm" (ngSubmit)="guardar()" >
 
     <mat-form-field >
-            <input matInput placeholder="Juanito"  formControlName="nombre" maxlength="20" >
+            <input matInput placeholder="Juanito"  formControlName="nombre" minlength="6" maxlength="20" >
             <mat-error *ngIf="nombre.invalid && nombre.errors.required">El nombre es requerido</mat-error>
     </mat-form-field>
     <br>
 
     <mat-form-field >
-        <input matInput placeholder="describir"  formControlName="descripcion" maxlength="20" >
+        <input matInput placeholder="describir"  formControlName="descripcion" minlength="6" maxlength="20" >
         <mat-error *ngIf="descripcion.invalid && descripcion.errors.required">La descripcion es requerida</mat-error>
     </mat-form-field>
     <br>
