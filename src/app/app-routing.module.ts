@@ -10,6 +10,7 @@ import { VisualizasDetallesComponent } from './pages/consulta/visualizas-detalle
 
 
 const routes: Routes = [
+  {path: '', component : MedicoComponent},
   {path: 'medicos', component: MedicoComponent, children: [
     {path: 'agregar', component: AgregarMedicoComponent},
     {path: 'edicion/:id', component: AgregarMedicoComponent}
