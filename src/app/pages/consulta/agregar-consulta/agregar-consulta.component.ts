@@ -125,7 +125,7 @@ export class AgregarConsultaComponent implements OnInit {
     //medico.id = //this.form.value['medico'];
     //this.consulta.medico = medico;
     //this.consulta.medico = this.displayedMedico;
-    if (this.selectedExamen.length != 0){
+    if (this.selectedExamen != null){
     this.selectedExamen.forEach(x =>{
       let oExamen = new ConsultaExamen();
       oExamen.examen = x;
