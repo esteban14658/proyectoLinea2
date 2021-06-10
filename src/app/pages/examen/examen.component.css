@@ -7,6 +7,10 @@ table {
   width: 100%;
 }
 
+.centrado{
+  text-align: center;
+}
+
 .main-div{
     height: 100%;
     display: grid;

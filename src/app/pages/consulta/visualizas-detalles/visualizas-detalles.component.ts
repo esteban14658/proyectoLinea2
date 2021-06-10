@@ -63,13 +63,17 @@ export class VisualizasDetallesComponent implements OnInit {
       this.consultaService.mensajeCambio.next('detalle eliminado satisfactoreamente');
       this.router.navigate(['/consulta/visualizardetalles/' + this.idConsulta]);
     });
+    this.listarConsultaExamen();
+    this.listarDetallesConsulta();
   }
 
   eliminarConsultaExamen(id: number){
     this.consultaService.eliminarConsultaExamen(this.idConsulta,id).subscribe(data => {
-      this.consultaService.mensajeCambio.next('detalle eliminado satisfactoreamente');
+      this.consultaService.mensajeCambio.next('examen eliminado satisfactoreamente');
       this.router.navigate(['/consulta/visualizardetalles/' + this.idConsulta]);
     });
+    this.listarConsultaExamen();
+    this.listarDetallesConsulta();
   }
 
 }

@@ -4,6 +4,8 @@
         <input matInput (keyup)="applyFilter($event)" matInput placeholder="Filtro">
     </mat-form-field>
 
+    <h1 class="centrado"> LISTA DE CONSULTAS </h1>
+
     <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
         
         <ng-container matColumnDef="fecha">
