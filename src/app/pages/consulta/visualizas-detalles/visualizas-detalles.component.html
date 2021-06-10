@@ -1,4 +1,6 @@
 <div>
+    <br>
+    <h1 class="centrado"> DETALLES CONSULTA </h1>
     <table mat-table [dataSource]="dataSourceDetalleConsulta" matSort class="mat-elevation-z8">
 
         <ng-container matColumnDef="diagnostico">
@@ -11,6 +13,18 @@
             <mat-cell *matCellDef="let element"> {{element.tratamiento}} </mat-cell>
         </ng-container>
 
+        <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-button color="primary" (click)="eliminarDetalleConsulta(element.id)">
+                    <mat-icon>clear</mat-icon>
+                </button>
+                <!--button mat-button color="primary" [routerLink]="['/consulta/visualizardetalles/'+ idConsulta + '/edicion/', element.id]" >
+                    <mat-icon>edit</mat-icon>
+                </button-->
+            </mat-cell>
+        </ng-container>
+
         <mat-header-row *matHeaderRowDef="displayedColumnsDC"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumnsDC;"></mat-row>
 
@@ -20,6 +34,7 @@
 <br>
 
 <div>
+    <h1 class="centrado"> EXAMENES DE LA CONSULTA </h1>
     <table mat-table [dataSource]="dataSourceConsultaExamen" matSort class="mat-elevation-z8">
 
         <ng-container matColumnDef="nombre">
@@ -30,6 +45,18 @@
         <ng-container matColumnDef="descripcion">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.examen.descripcion}} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+            <mat-header-cell *matHeaderCellDef>Acciones</mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-button color="primary" (click)="eliminarConsultaExamen(element.examen.id)">
+                    <mat-icon>clear</mat-icon>
+                </button>
+                <!--button mat-button color="primary" [routerLink]="['/consulta/visualizardetalles/'+ idConsulta + '/edicion/', element.examen.id]" >
+                    <mat-icon>edit</mat-icon>
+                </button-->
+            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumnsCE"></mat-header-row>

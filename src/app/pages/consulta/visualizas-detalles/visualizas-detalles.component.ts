@@ -17,12 +17,13 @@ import { MatSort } from '@angular/material/sort';
 export class VisualizasDetallesComponent implements OnInit {
 
   id: number;
+  idConsulta: number;
 
   dataSourceDetalleConsulta = new MatTableDataSource<DetalleConsulta>();
   dataSourceConsultaExamen = new MatTableDataSource<ConsultaExamen>();
 
-  displayedColumnsDC: string[] = ['diagnostico', 'tratamiento'];
-  displayedColumnsCE: string[] = ['nombre', 'descripcion'];
+  displayedColumnsDC: string[] = ['diagnostico', 'tratamiento', 'acciones'];
+  displayedColumnsCE: string[] = ['nombre', 'descripcion', 'acciones'];
 
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
@@ -52,8 +53,22 @@ export class VisualizasDetallesComponent implements OnInit {
   listarConsultaExamen() {
     this.consultaService.listarPorId(this.id).subscribe(data => {
       this.dataSourceConsultaExamen = new MatTableDataSource(data.listaConsultaExamen);
-      console.log(data);
+      this.idConsulta = data.id;
       this.dataSourceConsultaExamen.sort = this.sort;
+    });
+  }
+
+  eliminarDetalleConsulta(id: number){
+    this.consultaService.eliminarDetalleConsulta(id).subscribe(data => {
+      this.consultaService.mensajeCambio.next('detalle eliminado satisfactoreamente');
+      this.router.navigate(['/consulta/visualizardetalles/' + this.idConsulta]);
+    });
+  }
+
+  eliminarConsultaExamen(id: number){
+    this.consultaService.eliminarConsultaExamen(this.idConsulta,id).subscribe(data => {
+      this.consultaService.mensajeCambio.next('detalle eliminado satisfactoreamente');
+      this.router.navigate(['/consulta/visualizardetalles/' + this.idConsulta]);
     });
   }
 

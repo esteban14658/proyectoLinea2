@@ -21,7 +21,9 @@ const routes: Routes = [
   {path: 'consulta', component: ConsultaComponent, children: [
     {path: 'agregar', component: AgregarConsultaComponent},
     {path: 'edicion/:id', component: AgregarConsultaComponent},
-    {path: 'visualizardetalles/:id', component: VisualizasDetallesComponent}
+    {path: 'visualizardetalles/:id', component: VisualizasDetallesComponent, children: [
+      {path: 'visualizardetalles/:id', component: VisualizasDetallesComponent}
+    ]}
   ]}
 ];
 

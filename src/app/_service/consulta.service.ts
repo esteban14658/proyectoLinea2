@@ -34,4 +34,12 @@ export class ConsultaService {
   eliminar(id: number){
     return this.http.delete(`${this.url}/eliminar/${id}`)
   }
+
+  eliminarConsultaExamen(idConsulta: number, idExamen: number){
+    return this.http.delete(`${this.url}/eliminarConsultaExamenPorId/${idConsulta}/${idExamen}`)
+  }
+
+  eliminarDetalleConsulta(id: number){
+    return this.http.delete(`${this.url}/eliminarDetalleConsultaPorId/${id}`)
+  }
 }
